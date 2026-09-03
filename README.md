@@ -170,3 +170,19 @@ If you are interested in discussing **DSA, Java, software development, or proble
 ⭐ **If you find this repository useful, consider giving it a star!**
 
 > *Consistency beats intensity. Keep solving. Keep improving. 🚀*
+
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Array
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0219-contains-duplicate-ii](https://github.com/UjjawalVerma88/DSA/tree/main/0219-contains-duplicate-ii/) | Easy |
+## Hash Table
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0219-contains-duplicate-ii](https://github.com/UjjawalVerma88/DSA/tree/main/0219-contains-duplicate-ii/) | Easy |
+## Sliding Window
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0219-contains-duplicate-ii](https://github.com/UjjawalVerma88/DSA/tree/main/0219-contains-duplicate-ii/) | Easy |
+<!---LeetCode Topics End-->
