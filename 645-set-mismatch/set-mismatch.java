@@ -1,27 +1,34 @@
 class Solution {
     public int[] findErrorNums(int[] nums) {
 
-        HashSet<Integer> set = new HashSet<>();
+        int i = 0;
 
-        int duplicate = -1;
-        int missing = -1;
+        // Cyclic Sort
+        while (i < nums.length) {
 
-        // Find duplicate
-        for (int num : nums) {
-            if (set.contains(num)) {
-                duplicate = num;
-            }
-            set.add(num);
-        }
+            int correctIndex = nums[i] - 1;
 
-        // Find missing
-        for (int i = 1; i <= nums.length; i++) {
-            if (!set.contains(i)) {
-                missing = i;
-                break;
+            if (nums[i] != nums[correctIndex]) {
+                swap(nums, i, correctIndex);
+            } else {
+                i++;
             }
         }
 
-        return new int[]{duplicate, missing};
+        // Find duplicate and missing
+        for (i = 0; i < nums.length; i++) {
+
+            if (nums[i] != i + 1) {
+                return new int[]{nums[i], i + 1};
+            }
+        }
+
+        return new int[]{-1, -1};
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
