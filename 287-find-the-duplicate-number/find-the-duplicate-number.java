@@ -1,14 +1,33 @@
 class Solution {
+
+    public static void swap(int[] nums, int i, int idx) {
+        int temp = nums[i];
+        nums[i] = nums[idx];
+        nums[idx] = temp;
+    }
+
     public int findDuplicate(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for(int i = 0; i< nums.length; i++){
-            map.put(nums[i], map.getOrDefault(nums[i],0)+1);
-        }
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() > 1) {
-                return entry.getKey();
+
+        int i = 0;
+
+        while (i < nums.length) {
+
+            if (nums[i] != i + 1) {
+
+                int idx = nums[i] - 1;
+
+                // Duplicate found
+                if (nums[i] == nums[idx]) {
+                    return nums[i];
+                }
+
+                swap(nums, i, idx);
+
+            } else {
+                i++;
             }
         }
+
         return -1;
     }
 }
