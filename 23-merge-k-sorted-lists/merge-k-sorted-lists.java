@@ -10,7 +10,6 @@
  */
 class Solution {
     static ListNode merge(ListNode head1, ListNode head2) {
-
         ListNode i = head1;
         ListNode j = head2;
 
@@ -26,7 +25,6 @@ class Solution {
                 k.next = j;
                 j = j.next;
             }
-
             k = k.next;
         }
 
@@ -39,22 +37,46 @@ class Solution {
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
-        
-        ArrayList<ListNode> list = new ArrayList<>();
-        for(ListNode k : lists){
-            list.add(k);
-        }
-        if(list.size()<1){
-            return null;
-        }
-        while(list.size()>1){
-            ListNode a = list.get(list.size() - 1);
-            list.remove(list.size()-1);
-            ListNode b = list.get(list.size() - 1);
-            list.remove(list.size()-1);
-            ListNode c = merge(a,b);
-            list.add(c);
-        }
-        return list.get(0);
+
+    if (lists == null || lists.length == 0) {
+        return null;
     }
+
+    if (lists.length == 1) {
+        return lists[0];
+    }
+
+    ArrayList<ListNode> list1 = new ArrayList<>();
+
+    for (ListNode node : lists) {
+        list1.add(node);
+    }
+
+    while (list1.size() > 1) {
+
+        ArrayList<ListNode> list2 = new ArrayList<>();
+
+        // Merge two lists at a time
+        for (int i = 0; i < list1.size(); i += 2) {
+
+            if (i + 1 < list1.size()) {
+
+                ListNode merged = merge(
+                    list1.get(i),
+                    list1.get(i + 1)
+                );
+
+                list2.add(merged);
+
+            } else {
+                // If odd number of lists
+                list2.add(list1.get(i));
+            }
+        }
+
+        list1 = list2;
+    }
+
+    return list1.get(0);
+}
 }
